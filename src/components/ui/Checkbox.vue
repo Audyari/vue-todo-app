@@ -1,14 +1,19 @@
 <template>
-  <label class="flex items-center space-x-2 cursor-pointer">
+  <label class="inline-flex items-center space-x-2 cursor-pointer select-none">
     <input
       type="checkbox"
-      v-model="checked"
+      :checked="modelValue"
+      @change="$emit('update:modelValue', $event.target.checked)"
       class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
     />
-    <span><slot /></span>
+    <slot />
   </label>
 </template>
 
 <script setup>
-const checked = defineModel()
+defineProps({
+  modelValue: Boolean
+})
+
+defineEmits(['update:modelValue'])
 </script>
