@@ -1,59 +1,50 @@
 # Project Context
 
 ## Purpose
-Aplikasi Todo sederhana yang dibangun dengan Vue.js untuk membantu pengelolaan tugas sehari-hari.
+Aplikasi To-Do List sederhana yang dibangun dengan Vue.js 3 dan Pinia untuk manajemen state. Aplikasi ini memungkinkan pengguna untuk membuat, membaca, memperbarui, dan menghapus tugas (CRUD operations).
 
 ## Tech Stack
-- Vue 3 (Composition API)
-- Vite (Build Tool)
-- TailwindCSS (Styling)
+- Vue.js 3 (Composition API)
 - Pinia (State Management)
-- Vue Router (Routing)
+- Vite (Build Tool & Development Server)
+- TailwindCSS (Styling)
+- JavaScript (ES6+)
 
 ## Project Conventions
 
 ### Code Style
-- Menggunakan Composition API dengan `<script setup>`
-- Nama komponen menggunakan PascalCase (contoh: `TodoList.vue`)
-- Gunakan koma di akhir (trailing commas)
+- Gunakan 2 spasi untuk indentasi
 - Gunakan single quote untuk string
-- 2 spasi untuk indentasi
-- Semicolon di akhir pernyataan
+- Tambahkan koma di akhir (trailing commas) untuk object dan array multi-baris
+- Komponen Vue menggunakan PascalCase (contoh: TodoList.vue)
+- File JavaScript menggunakan camelCase (contoh: todoStore.js)
 
 ### Architecture Patterns
-- Komponen berbasis komposisi (Composition API)
-- State management menggunakan Pinia untuk state global
-- Komponen UI yang dapat digunakan kembali di folder `components/ui`
+- Komposisi berbasis komponen (Component-based architecture)
+- State management menggunakan Pinia
+- Penggunaan Composition API untuk logika yang dapat digunakan kembali (composables)
 
 ### Testing Strategy
-- Unit test menggunakan Vitest
-- Komponen testing menggunakan Vue Test Utils
-- Coverage minimal 80% untuk komponen utama
+- [TODO: Tambahkan strategi testing]
 
 ### Git Workflow
-- Branch `main` untuk production
-- Branch `develop` untuk pengembangan
-- Gunakan fitur branch untuk setiap fitur baru (contoh: `feature/add-todo`)
-- Gunakan format commit message:
-  - `feat:` untuk fitur baru
-  - `fix:` untuk perbaikan bug
-  - `refactor:` untuk perubahan kode yang tidak mengubah perilaku
-  - `docs:` untuk perubahan dokumentasi
+- Gunakan Conventional Commits (feat:, fix:, docs:, style:, refactor:, test:, chore:)
+- Buat branch fitur untuk pengembangan fitur baru (contoh: `feature/add-todo`)
+- Lakukan pull request untuk menggabungkan perubahan ke branch main
 
 ## Domain Context
-- Aplikasi ini fokus pada manajemen tugas sederhana
-- Setiap tugas memiliki judul, deskripsi, status (selesai/belum), dan tanggal
-- Pengguna dapat membuat, membaca, memperbarui, dan menghapus tugas
+Aplikasi ini fokus pada manajemen tugas sederhana dengan fitur:
+- Menambahkan tugas baru
+- Menandai tugas sebagai selesai
+- Menghapus tugas
+- Filter tugas (semua/aktif/selesai)
 
 ## Important Constraints
-- Harus berjalan di browser modern (Chrome, Firefox, Safari, Edge versi terbaru)
-- Responsif untuk mobile dan desktop
-- Aksesibilitas (a11y) yang baik
+- Aplikasi berjalan di browser modern (Chrome, Firefox, Safari, Edge versi terbaru)
+- Data disimpan di local storage browser
 
 ## External Dependencies
 - Vue.js (Frontend Framework)
 - Pinia (State Management)
 - TailwindCSS (Styling)
 - Vite (Build Tool)
-- Vue Router (Routing)
-- Heroicons (Icons)
