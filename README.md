@@ -1,21 +1,144 @@
-# Vue 3 + Vite
+# Todo App - Vue 3
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Aplikasi Todo sederhana dan modern yang dibangun dengan Vue 3 untuk membantu Anda mengelola tugas sehari-hari dengan mudah.
 
-While this project uses Vue.js, Vite supports many popular JS frameworks. [See all the supported frameworks](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
+![Vue 3](https://img.shields.io/badge/Vue-3.x-42b883?style=flat-square&logo=vue.js)
+![Vite](https://img.shields.io/badge/Vite-5.x-646cff?style=flat-square&logo=vite)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-38bdf8?style=flat-square&logo=tailwind-css)
+![Pinia](https://img.shields.io/badge/Pinia-2.x-ffd859?style=flat-square)
 
-## Deploy Your Own
+## ✨ Fitur
 
-Deploy your own Vite project with Vercel.
+- ✅ **Tambah Tugas** - Buat tugas baru dengan cepat
+- 🎯 **Tandai Selesai** - Tandai tugas yang sudah dikerjakan
+- ✏️ **Edit Tugas** - Ubah judul tugas kapan saja
+- 🗑️ **Hapus Tugas** - Hapus tugas yang tidak diperlukan
+- 🔍 **Filter Tugas** - Lihat tugas berdasarkan status (Semua/Aktif/Selesai)
+- 💾 **Penyimpanan Lokal** - Data tersimpan otomatis di browser
 
-[![Deploy with Vercel](https://vercel.com/button)]([https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/framework-boilerplates/vite&template=vite](https://vercel.com/new/clone?demo-description=Vite%2FVue.js%20site%20that%20can%20be%20deployed%20to%20Vercel&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F2T4BUF3mEBKPJF3jcjU6nS%2F0d4a02e7c48091d13814a4ab513e8734%2FScreen_Shot_2022-04-13_at_10.05.56_PM.png&demo-title=Vite%20-%20Vue&demo-url=https%3A%2F%2Fvite-vue-template.vercel.app%2F&from=templates&project-name=Vite%20-%20Vue&repository-name=vite-vue&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fvercel%2Ftree%2Fmain%2Fexamples%2Fvite&skippable-integrations=1))
+## 🚀 Quick Start
 
-_Live Example: https://vite-vue-template.vercel.app_
+### Prerequisites
 
-### Deploying From Your Terminal
+Pastikan Anda telah menginstal:
+- [Node.js](https://nodejs.org/) (versi 16 atau lebih baru)
+- npm (biasanya sudah termasuk dengan Node.js)
 
-You can deploy your new Vite project with a single command from your terminal using [Vercel CLI](https://vercel.com/download):
+### Instalasi
 
-```shell
-$ vercel
+1. **Clone repository**
+```bash
+git clone git@github.com:Audyari/vue-todo-app.git
+cd vue-todo-app
 ```
+
+2. **Install dependencies**
+```bash
+npm install
+```
+
+3. **Jalankan development server**
+```bash
+npm run dev
+```
+
+4. **Buka browser**
+```
+http://localhost:5173
+```
+
+## 📦 Tech Stack
+
+- **[Vue 3](https://vuejs.org/)** - Progressive JavaScript Framework
+- **[Vite](https://vitejs.dev/)** - Next Generation Frontend Tooling
+- **[Pinia](https://pinia.vuejs.org/)** - State Management untuk Vue
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-First CSS Framework
+
+## 📁 Struktur Proyek
+
+```
+todo-app-vue3/
+├── public/              # Static assets
+├── src/
+│   ├── assets/          # Images, fonts, dll
+│   ├── components/      # Komponen Vue
+│   │   └── ui/          # Komponen UI reusable
+│   ├── stores/          # Pinia stores
+│   ├── App.vue          # Root component
+│   └── main.js          # Entry point
+├── index.html
+├── package.json
+├── vite.config.js
+└── tailwind.config.js
+```
+
+## 🛠️ Development
+
+### Available Scripts
+
+```bash
+# Jalankan development server
+npm run dev
+
+# Build untuk production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Lint kode
+npm run lint
+
+# Format kode (jika menggunakan Prettier)
+npm run format
+```
+
+### Code Conventions
+
+**Komponen**
+- Gunakan `<script setup>` untuk Composition API
+- Nama file komponen menggunakan PascalCase (contoh: `TodoItem.vue`)
+- Props dan events menggunakan kebab-case
+
+**Git Commit Messages**
+- `feat:` untuk fitur baru
+- `fix:` untuk perbaikan bug
+- `refactor:` untuk refactoring kode
+- `docs:` untuk dokumentasi
+- `style:` untuk perubahan styling
+- `chore:` untuk maintenance
+
+Contoh:
+```bash
+git commit -m "feat: tambah fitur filter todo berdasarkan status"
+```
+
+## 🤝 Contributing
+
+Kontribusi sangat diterima! Silakan ikuti langkah berikut:
+
+1. Fork repository
+2. Buat branch fitur (`git checkout -b feature/AmazingFeature`)
+3. Commit perubahan (`git commit -m 'feat: add some AmazingFeature'`)
+4. Push ke branch (`git push origin feature/AmazingFeature`)
+5. Buat Pull Request
+
+## 📝 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## 👤 Author
+
+**Audyari Wiyono**
+- GitHub: [@Audyari](https://github.com/Audyari)
+- Email: audy123ari@gmail.com
+
+## 🙏 Acknowledgments
+
+- [Vue.js Team](https://vuejs.org/) untuk framework yang luar biasa
+- [Tailwind CSS](https://tailwindcss.com/) untuk styling yang cepat
+- [Vite](https://vitejs.dev/) untuk developer experience yang amazing
+
+---
+
+⭐ Jangan lupa beri bintang jika proyek ini membantu Anda!
