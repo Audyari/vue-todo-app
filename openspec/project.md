@@ -1,54 +1,59 @@
 # Project Context
 
 ## Purpose
-Aplikasi Todo sederhana yang dibangun dengan Vue.js 3 dan Vite. Tujuan proyek ini adalah untuk menyediakan antarmuka yang bersih dan mudah digunakan untuk mengelola daftar tugas harian.
+Aplikasi Todo sederhana yang dibangun dengan Vue.js untuk membantu pengelolaan tugas sehari-hari.
 
 ## Tech Stack
-- **Frontend Framework**: Vue.js 3 (Composition API)
-- **Build Tool**: Vite
-- **Package Manager**: pnpm
-- **Version Control**: Git
-- **Deployment**: Static Hosting (bisa di-deploy di Vercel, Netlify, atau layanan sejenis)
+- Vue 3 (Composition API)
+- Vite (Build Tool)
+- TailwindCSS (Styling)
+- Pinia (State Management)
+- Vue Router (Routing)
 
 ## Project Conventions
 
 ### Code Style
-- Gunakan 2 spasi untuk indentasi
+- Menggunakan Composition API dengan `<script setup>`
+- Nama komponen menggunakan PascalCase (contoh: `TodoList.vue`)
+- Gunakan koma di akhir (trailing commas)
 - Gunakan single quote untuk string
-- Komponen Vue menggunakan PascalCase (contoh: `TodoList.vue`)
-- Variabel dan fungsi menggunakan camelCase
-- Komponen yang dapat digunakan kembali diletakkan di folder `src/components`
-- Halaman diletakkan di folder `src/views`
+- 2 spasi untuk indentasi
+- Semicolon di akhir pernyataan
 
 ### Architecture Patterns
-- Komposisi berbasis Composition API
-- State management sederhana menggunakan `reactive` atau `ref` dari Vue
-- Komponen yang dapat digunakan kembali (reusable components)
-- Struktur folder berbasis fitur (feature-based folder structure)
+- Komponen berbasis komposisi (Composition API)
+- State management menggunakan Pinia untuk state global
+- Komponen UI yang dapat digunakan kembali di folder `components/ui`
 
 ### Testing Strategy
-- Unit testing menggunakan Vitest (rekomendasi)
+- Unit test menggunakan Vitest
 - Komponen testing menggunakan Vue Test Utils
-- Coverage minimal 70% untuk komponen kritis
+- Coverage minimal 80% untuk komponen utama
 
 ### Git Workflow
-- Branch `main` untuk produksi
+- Branch `main` untuk production
 - Branch `develop` untuk pengembangan
-- Buat fitur baru di branch terpisah dengan format: `feature/nama-fitur`
-- Gunakan Conventional Commits untuk pesan commit
-- Lakukan code review sebelum merge ke develop
+- Gunakan fitur branch untuk setiap fitur baru (contoh: `feature/add-todo`)
+- Gunakan format commit message:
+  - `feat:` untuk fitur baru
+  - `fix:` untuk perbaikan bug
+  - `refactor:` untuk perubahan kode yang tidak mengubah perilaku
+  - `docs:` untuk perubahan dokumentasi
 
 ## Domain Context
-- Aplikasi ini adalah aplikasi manajemen tugas sederhana
-- Setiap tugas memiliki judul, deskripsi, status (selesai/belum selesai), dan tanggal tenggat waktu
-- Pengguna dapat menambahkan, mengedit, menghapus, dan menandai tugas sebagai selesai
+- Aplikasi ini fokus pada manajemen tugas sederhana
+- Setiap tugas memiliki judul, deskripsi, status (selesai/belum), dan tanggal
+- Pengguna dapat membuat, membaca, memperbarui, dan menghapus tugas
 
 ## Important Constraints
-- Aplikasi harus ringan dan cepat dimuat
-- Harus berjalan di browser modern terbaru
-- Responsif dan dapat diakses di perangkat mobile
+- Harus berjalan di browser modern (Chrome, Firefox, Safari, Edge versi terbaru)
+- Responsif untuk mobile dan desktop
+- Aksesibilitas (a11y) yang baik
 
 ## External Dependencies
-- Vue.js 3: Framework JavaScript progresif
-- Vite: Build tool dan development server
-- pnpm: Package manager yang cepat dan hemat ruang disk
+- Vue.js (Frontend Framework)
+- Pinia (State Management)
+- TailwindCSS (Styling)
+- Vite (Build Tool)
+- Vue Router (Routing)
+- Heroicons (Icons)

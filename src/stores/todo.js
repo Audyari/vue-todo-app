@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 export const useTodoStore = defineStore('todo', {
   state: () => ({
-    todos: []
+    todos: JSON.parse(localStorage.getItem('todos') || '[]')
   }),
 
   getters: {
@@ -11,6 +11,7 @@ export const useTodoStore = defineStore('todo', {
   },
 
   actions: {
+    // Tambah todo baru
     addTodo(title) {
       if (title.trim()) {
         this.todos.push({
@@ -23,11 +24,13 @@ export const useTodoStore = defineStore('todo', {
       }
     },
 
+    // Hapus todo
     deleteTodo(id) {
       this.todos = this.todos.filter(todo => todo.id !== id)
       this.saveToLocalStorage()
     },
 
+    // Ubah status selesai/belum
     toggleTodo(id) {
       const todo = this.todos.find(todo => todo.id === id)
       if (todo) {
@@ -36,12 +39,13 @@ export const useTodoStore = defineStore('todo', {
       }
     },
 
-    // ✏️ edit logic
+    // ✏️ Masuk ke mode edit
     startEdit(id) {
       const todo = this.todos.find(todo => todo.id === id)
       if (todo) todo.editing = true
     },
 
+    // 💾 Simpan hasil edit
     saveEdit(id, newTitle) {
       const todo = this.todos.find(todo => todo.id === id)
       if (todo && newTitle.trim()) {
@@ -51,25 +55,15 @@ export const useTodoStore = defineStore('todo', {
       }
     },
 
+    // ❌ Batalkan mode edit
     cancelEdit(id) {
       const todo = this.todos.find(todo => todo.id === id)
       if (todo) todo.editing = false
     },
 
-    // 🧠 simpan & load dari localStorage
+    // 🔄 Simpan otomatis ke localStorage
     saveToLocalStorage() {
       localStorage.setItem('todos', JSON.stringify(this.todos))
-    },
-
-    loadFromLocalStorage() {
-      const data = localStorage.getItem('todos')
-      if (data) {
-        try {
-          this.todos = JSON.parse(data)
-        } catch (e) {
-          console.error('Gagal parsing localStorage:', e)
-        }
-      }
     }
   }
 })
