@@ -28,7 +28,9 @@
         :key="todo.id"
         :todo="todo"
         @toggle="toggle"
-        @edit="handleEdit"
+        @edit="saveEdit"
+        @startEdit="startEdit"
+        @cancelEdit="cancelEdit"
         @delete="remove"
       />
     </div>
@@ -61,9 +63,16 @@ const addNewTodo = () => {
 const remove = (id) => store.deleteTodo(id);
 const toggle = (id) => store.toggleTodo(id);
 
-const handleEdit = (id, newTitle) => {
-  if (newTitle) store.saveEdit(id, newTitle);
-  else store.startEdit(id);
+const startEdit = (id) => {
+  store.startEdit(id); // set editing=true di store
+};
+
+const saveEdit = (id, newTitle) => {
+  store.saveEdit(id, newTitle); // update title + editing=false
+};
+
+const cancelEdit = (id) => {
+  store.cancelEdit(id); // editing=false tanpa ubah title
 };
 
 onMounted(() => store.loadFromLocalStorage());

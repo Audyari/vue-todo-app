@@ -1,50 +1,71 @@
 # Project Context
 
 ## Purpose
-Aplikasi To-Do List sederhana yang dibangun dengan Vue.js 3 dan Pinia untuk manajemen state. Aplikasi ini memungkinkan pengguna untuk membuat, membaca, memperbarui, dan menghapus tugas (CRUD operations).
+Aplikasi Todo sederhana yang dibangun dengan Vue 3 untuk membantu pengelolaan tugas sehari-hari. Aplikasi ini memungkinkan pengguna untuk:
+- Menambahkan tugas baru
+- Menandai tugas sebagai selesai/belum selesai
+- Mengedit dan menghapus tugas
+- Memfilter tugas berdasarkan status (semua/aktif/selesai)
+- Menyimpan tugas di localStorage browser
 
 ## Tech Stack
-- Vue.js 3 (Composition API)
-- Pinia (State Management)
-- Vite (Build Tool & Development Server)
-- TailwindCSS (Styling)
-- JavaScript (ES6+)
+- **Frontend Framework**: Vue 3 (Composition API)
+- **State Management**: Pinia
+- **Styling**: Tailwind CSS
+- **Build Tool**: Vite
+- **Package Manager**: npm
 
 ## Project Conventions
 
 ### Code Style
-- Gunakan 2 spasi untuk indentasi
-- Gunakan single quote untuk string
-- Tambahkan koma di akhir (trailing commas) untuk object dan array multi-baris
-- Komponen Vue menggunakan PascalCase (contoh: TodoList.vue)
-- File JavaScript menggunakan camelCase (contoh: todoStore.js)
+- Menggunakan Composition API dengan `<script setup>`
+- Nama komponen menggunakan PascalCase (contoh: `TodoItem.vue`)
+- Props dan events menggunakan kebab-case (contoh: `@todo-click`)
+- Komponen UI disimpan di direktori `src/components/ui/`
+- State management menggunakan Pinia store
 
 ### Architecture Patterns
-- Komposisi berbasis komponen (Component-based architecture)
-- State management menggunakan Pinia
-- Penggunaan Composition API untuk logika yang dapat digunakan kembali (composables)
+- **Komponen**: Arsitektur berbasis komponen dengan pembagian yang jelas
+- **State Management**: Menggunakan Pinia untuk manajemen state global
+- **Komposisi**: Memanfaatkan Composition API untuk logika yang dapat digunakan kembali
+- **Unidirectional Data Flow**: Data mengalir dari parent ke child melalui props, dan perubahan dikomunikasikan melalui events
 
 ### Testing Strategy
-- [TODO: Tambahkan strategi testing]
+- Belum diimplementasikan, namun direncanakan menggunakan:
+  - Vitest untuk unit testing
+  - Testing Library Vue untuk pengujian komponen
+  - Cypress untuk pengujian E2E
 
 ### Git Workflow
-- Gunakan Conventional Commits (feat:, fix:, docs:, style:, refactor:, test:, chore:)
-- Buat branch fitur untuk pengembangan fitur baru (contoh: `feature/add-todo`)
-- Lakukan pull request untuk menggabungkan perubahan ke branch main
+- Branch `main` sebagai branch produksi
+- Fitur baru dikembangkan di branch terpisah dengan format `feature/nama-fitur`
+- Commit message mengikuti konvensi:
+  - `feat:` untuk fitur baru
+  - `fix:` untuk perbaikan bug
+  - `refactor:` untuk perubahan kode yang tidak mengubah perilaku
+  - `docs:` untuk perubahan dokumentasi
+  - `style:` untuk perubahan format (spasi, koma, dll)
+  - `chore:` untuk perubahan build process atau tools
 
 ## Domain Context
-Aplikasi ini fokus pada manajemen tugas sederhana dengan fitur:
-- Menambahkan tugas baru
-- Menandai tugas sebagai selesai
-- Menghapus tugas
-- Filter tugas (semua/aktif/selesai)
+- **Todo**: Sebuah tugas yang memiliki:
+  - ID (unik)
+  - Judul (wajib)
+  - Status (selesai/belum selesai)
+  - Timestamp pembuatan
+- **Filter**: Status filter untuk menampilkan todo:
+  - Semua (default)
+  - Aktif (belum selesai)
+  - Selesai
 
 ## Important Constraints
-- Aplikasi berjalan di browser modern (Chrome, Firefox, Safari, Edge versi terbaru)
-- Data disimpan di local storage browser
+- Data disimpan di localStorage browser
+- Tidak ada autentikasi pengguna
+- Dibangun sebagai single page application (SPA)
 
 ## External Dependencies
-- Vue.js (Frontend Framework)
-- Pinia (State Management)
-- TailwindCSS (Styling)
-- Vite (Build Tool)
+- **Vue 3**: Framework JavaScript progresif
+- **Pinia**: State management untuk Vue
+- **Tailwind CSS**: Utility-first CSS framework
+- **Vite**: Build tool dan development server
+- **@vitejs/plugin-vue**: Plugin Vite untuk Vue
