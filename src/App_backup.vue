@@ -45,114 +45,101 @@
         message="Belum ada tugas di kategori ini 🙃"
       />
 
-      <Card
+      <TodoItem
         v-for="todo in filteredTodos"
         :key="todo.id"
-        class="flex justify-between items-center"
-      >
-        <!-- Mode biasa -->
-        <template v-if="!todo.editing">
-          <div class="flex items-center">
-            <Checkbox v-model="todo.completed" @change="toggle(todo.id)">
-              <span
-                :class="{ 'line-through text-gray-400': todo.completed }"
-                class="ml-2"
-              >
-                {{ todo.title }}
-              </span>
-            </Checkbox>
-          </div>
+        :todo="todo"
+        @toggle="toggle"
+        @edit="handleEdit"
+        @delete="remove"
+      />
 
-          <div class="flex space-x-2">
-            <Button variant="secondary" @click="startEdit(todo.id)">Edit</Button>
-            <Button variant="secondary" @click="remove(todo.id)">Hapus</Button>
-          </div>
-        </template>
-
-        <!-- Mode edit -->
-        <template v-else>
-          <div class="flex items-center w-full space-x-2">
-            <Input v-model="editText" placeholder="Edit tugas..." class="flex-1" />
-            <Button variant="primary" @click="saveEdit(todo.id)">Simpan</Button>
-            <Button variant="secondary" @click="cancelEdit(todo.id)">Batal</Button>
-          </div>
-        </template>
-      </Card>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
-import { useTodoStore } from '@/stores/todoStore'
-import { storeToRefs } from 'pinia'
-import { onMounted } from 'vue'
+import { ref, computed, watch } from "vue";
+import { useTodoStore } from "@/stores/todoStore";
+import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
 
 // import komponen UI
-import Input from '@/components/ui/Input.vue'
-import Button from '@/components/ui/Button.vue'
-import Checkbox from '@/components/ui/Checkbox.vue'
-import Card from '@/components/ui/Card.vue'
-import EmptyState from '@/components/ui/EmptyState.vue'
+import Input from "@/components/ui/Input.vue";
+import Button from "@/components/ui/Button.vue";
+import Checkbox from "@/components/ui/Checkbox.vue";
+import Card from "@/components/ui/Card.vue";
+import EmptyState from "@/components/ui/EmptyState.vue";
+import TodoItem from "@/components/ui/TodoItem.vue";
 
 // store
-const store = useTodoStore()
-const { todos } = storeToRefs(store)
+const store = useTodoStore();
+const { todos } = storeToRefs(store);
 
-
-const newTodo = ref('')
-const editText = ref('')
-const filter = ref('all')
+const newTodo = ref("");
+const editText = ref("");
+const filter = ref("all");
 
 // tambah todo baru
 const addNewTodo = () => {
   if (newTodo.value.trim()) {
-    store.addTodo(newTodo.value)
-    newTodo.value = ''
+    store.addTodo(newTodo.value);
+    newTodo.value = "";
   }
-}
+};
 
 // hapus & toggle
-const remove = (id) => store.deleteTodo(id)
-const toggle = (id) => store.toggleTodo(id)
+const remove = (id) => store.deleteTodo(id);
+const toggle = (id) => store.toggleTodo(id);
 
 // edit
 const startEdit = (id) => {
-  const todo = todos.value.find(t => t.id === id)
+  const todo = todos.value.find((t) => t.id === id);
   if (todo) {
-    editText.value = todo.title
-    store.startEdit(id)
+    editText.value = todo.title;
+    store.startEdit(id);
   }
-}
+};
 
 const saveEdit = (id) => {
-  store.saveEdit(id, editText.value)
-  editText.value = ''
-}
+  store.saveEdit(id, editText.value);
+  editText.value = "";
+};
 
 const cancelEdit = (id) => {
-  store.cancelEdit(id)
-  editText.value = ''
-}
+  store.cancelEdit(id);
+  editText.value = "";
+};
 
 // filter todo
 const filteredTodos = computed(() => {
-  if (filter.value === 'active') return store.active
-  if (filter.value === 'completed') return store.completed
-  return todos.value
-})
+  if (filter.value === "active") return store.active;
+  if (filter.value === "completed") return store.completed;
+  return todos.value;
+});
 
 // Simpan otomatis jika todos berubah (backup tambahan)
 watch(
   todos,
   (newVal) => {
-    localStorage.setItem('todos', JSON.stringify(newVal))
+    localStorage.setItem("todos", JSON.stringify(newVal));
   },
   { deep: true }
-)
+);
 
 // 🟢 load data dari localStorage setelah komponen siap
 onMounted(() => {
-  store.loadFromLocalStorage()
-})  
+  store.loadFromLocalStorage();
+});
+
+// handler edit
+const handleEdit = (id, newTitle) => {
+  if (newTitle) {
+    // simpan hasil edit
+    store.saveEdit(id, newTitle)
+  } else {
+    // ubah ke mode edit
+    store.startEdit(id)
+  }
+}
 </script>
